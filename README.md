@@ -5,3 +5,8 @@ This program fetches real time news, use NLP to summarize, and send the summariz
 
 ## Getting Started
 ### Dependencies
+* requests
+* beautifulsoup4
+* new-please
+* pandas
+* nltk
