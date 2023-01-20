@@ -10,3 +10,8 @@ This program fetches most current news data from AP news, TechCrunch, and Reuter
 * new-please
 * pandas
 * nltk
+* summa
+* sumy
+* PyTorch
+* Transformers
+* sentencepiece
