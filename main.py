@@ -4,7 +4,7 @@ import random
 import os
 from dotenv import load_dotenv
 
-load_dotenv("../../PycharmProjects/100-days-of-code-python/.env")
+load_dotenv("./.env")
 
 MY_EMAIL = os.getenv("MY_EMAIL")
 MY_PASSWORD = os.getenv("MY_EMAIL_PASSWORD_APP")
