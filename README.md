@@ -15,4 +15,4 @@ This program fetches most current news data from AP news, TechCrunch, and Reuter
 * PyTorch
 * Transformers
 * sentencepiece
-* OpenAI
+* OpenAI GPT-3
