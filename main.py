@@ -1,46 +1,31 @@
-import smtplib
-import datetime as dt
-import random
-import os
-from dotenv import load_dotenv
+from news_extractor import ApNews, TechCrunch, Reuters
+from news_summarizer import OpenAIGPT
+from newsplease import NewsPlease
 
-load_dotenv("./.env")
+ap = ApNews()
+tech = TechCrunch()
+reuters = Reuters()
 
-MY_EMAIL = os.getenv("MY_EMAIL")
-MY_PASSWORD = os.getenv("MY_EMAIL_PASSWORD_APP")
+ap_top_article = NewsPlease.from_url( ap.get_top_news_url())
+tech_top_article = NewsPlease.from_url(tech.get_top_news_url())
+reuters_top_article = NewsPlease.from_url(reuters.get_top_news_url())
 
-#
-# with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
-#     connection.starttls()
-#     connection.login(user= my_email, password=password)
-#     connection.sendmail(
-#         from_addr=my_email,
-#         to_addrs="programming.31415@yahoo.com",
-#         msg="Subject:Hello\n\nThis is the body of my email."
-#     )
-# now = dt.datetime.now()
-# year = now.year
-# month = now.month
-# day_of_week = now.weekday()
-# print(day_of_week)
-#
-#
-# date_of_birth = dt.datetime(year= 2001, month= 1, day=1, hour= 1)
-# print(date_of_birth)
+gpt_summarizer = OpenAIGPT()
 
-now = dt.datetime.now()
-weekday = now.weekday()
-print(weekday)
-if weekday == 2: # 0 is Monday
-    with open("quotes.txt") as quote_file:
-        all_quotes = quote_file.readlines()
-        quote = random.choice(all_quotes)
+print(ap_top_article.title)
+print("\n")
+print(ap_top_article.maintext)
+print(gpt_summarizer.summarize(ap_top_article.maintext))
+print("\n\n")
 
-    print(quote)
-    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-        connection.starttls()
-        connection.login(MY_EMAIL, MY_PASSWORD)
-        connection.sendmail(from_addr=MY_EMAIL,
-                            to_addrs=MY_EMAIL,
-                            msg=f"Subject: Monday Motivation\n\n{quote}"
-                            )
+# print(tech_top_article.title)
+# print("\n")
+# print(tech_top_article.maintext)
+# print(gpt_summarizer.summarize(tech_top_article.maintext))
+# print("\n\n\n")
+
+# print(reuters_top_article.title)
+# print("\n")
+# print(reuters_top_article.maintext)
+# print(gpt_summarizer.summarize(reuters_top_article.maintext))
+# print("\n\n\n")
