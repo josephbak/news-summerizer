@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from newsplease import NewsPlease
 from typing import List
 
 class ApNews:
@@ -59,13 +58,3 @@ class Reuters:
         
     def get_top_news_url(self) -> str:
         return self.get_news_urls()[0]
-
-
-ap = ApNews()
-print(ap.get_top_news_url())
-
-tech = TechCrunch()
-print(tech.get_top_news_url())
-
-reuters = Reuters()
-print(reuters.get_top_news_url())
